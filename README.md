@@ -34,7 +34,9 @@ A target group in AWS is a component that directs traffic to registered targets,
 ## Step 1: Launch Template
 Go to the console and search for <kbd>EC2</kbd> and on. click on <kbd>Launch Templete</kbd>. Creating the new template by clicking on <kbd>Cretate Launch Templete</kbd>. follow the below image.
 
- *Note: Before launching template, I have created the one instance and set-up the instance configuration with fully deployed a simple frentend website
+ *Note: Before launching the template, I created one instance and set up the instance configuration with a fully deployed simple frontend website. So, I am using that instance configuration for this launch template.
+
+ ![Untitled](images/Screenshot(148)%201.png)
 
 
 
