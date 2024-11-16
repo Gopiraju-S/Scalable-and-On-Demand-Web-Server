@@ -32,11 +32,28 @@ Elastic Load Balancing automatically distributes your incoming traffic across mu
 A target group in AWS is a component that directs traffic to registered targets, such as EC2 instances, IP addresses, containers, or Lambda functions.
 
 ## Step 1: Launch Template
-Go to the console and search for <kbd>EC2</kbd> and on. click on <kbd>Launch Templete</kbd>. Creating the new template by clicking on <kbd>Cretate Launch Templete</kbd>. follow the below image.
-
- *Note: Before launching the template, I created one instance and set up the instance configuration with a fully deployed simple frontend website. So, I am using that instance configuration for this launch template.
+Go to the console and search for <kbd>EC2</kbd> and on. click on <kbd>Launch Templete</kbd>. Creating the new template by clicking on <kbd>Cretate Launch Templete</kbd>. follow the image below.
 
  ![Untitled](images/Screenshot(148)%201.png)
 
+Set Up the launch template: These are the main requirements for deploying the server. 
+- Name: <kbd>Tutorial_Website</kbd>
+- Select AMI's: <kbd>Amazon Linux</kbd>
+- Select Instance Type: <kbd>t2.micro</Kbd>
+- Key Pair: <kbd>Ben10.pem</Kbd>
+- Security Group: select SG, must allow ssh and HTTP, deny https
+- Edit User Data: Copy and Past(or simply Upload the file),which must follow the correct commands and code indentation
+click on the <kbd> Create Launch Template</kbd>
 
+  ![untitled](Images/Screenshot2.png)
 
+## Step 2: Auto Scaling Group
+If we want to create an auto-scaling group, Go to select the Auto-scaling Groups on your bottom left side. and click on the <kbd>Create Auto Scaling Groups</kbd>
+
+![untitled](Images/Screenshot3.png)
+
+To set up the Auto Scaling Group, we need to complete the process in 7 stages:
+1. Choose Launch Template:
+      - Name of Auto Scaling Group: <kbd> ASGTutorialWebsite</kbd>
+      - Choose Launch Template: <kbd>Tutorial_website</kbd>
+2. Choose instance launch options 
