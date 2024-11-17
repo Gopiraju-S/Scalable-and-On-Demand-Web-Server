@@ -34,7 +34,7 @@ A target group in AWS is a component that directs traffic to registered targets,
 ## Step 1: Launch Template
 Go to the console and search for <kbd>EC2</kbd> and on. click on <kbd>Launch Templete</kbd>. Creating the new template by clicking on <kbd>Cretate Launch Templete</kbd>. follow the image below.
 
- ![Untitled](images/Screenshot(148)%201.png)
+ ![Untitled](images/Screenshot1.png)
 
 Set Up the launch template: These are the main requirements for deploying the server. 
 - Name: <kbd>Tutorial_Website</kbd>
@@ -65,7 +65,12 @@ When we integrate the auto-scaling group into our webserver. Newly launched inst
 ![Untitled](images/Screenshot4.png)
 
 #### 2.3. Integrate with Other Services -optional:
-
+We need to select Network configuration, to create the instance.
+   - select VPC: select where we want to create the instances.
+   - select subnets: select where we want to create the instances in availability zones.
+     
+       ![untitled](Images/Screenshot5.png)
+   
 Here, to distribute all incoming traffic to all instances equally. We need to integrate the load balancer into our webserver(EC2 instances). So that, we can specify or create a new load balancer in this step. I am Creating the new load balancer.
    - Select Load Balancer: <kbd> Attach to a New Load Balencer</kbd>
    - Load Balancer type: <kbd>Aplication Load Balencer</kbd>
@@ -108,12 +113,12 @@ This is used to get notifications by using the AWS SNS service.
 click on <kbd>Next</kbd> botten.
 
 #### 2.6. Add tags - optional Info
-Add tags to help you search, filter, and track your Auto Scaling group across AWS. You can also choose to add these tags to instances when they are launched automatically.
+Add tags to help you search, filter, and track your Auto Scaling group across AWS. You can also add these tags to instances when they are launched automatically.
 
 click on <kbd>Next</kbd> botten.
 
 #### 2.7. Review:
-Cross-check all set-up before creating an Auto-scaling group.
+Cross-check all setup before creating an Auto-scaling group.
 
 click on <kbd>Create Auto Scaling Group</kbd> botten.
 
@@ -123,7 +128,7 @@ click on <kbd>Create Auto Scaling Group</kbd> botten.
 1. While creating the instances, we have specified the Desired, Minimum, and Maximum capacity. Based on these parameters, Instances are created. We can verify instances by navigating to EC2-**instances**. At normal conditions, two EC2-instances are maintained.
 ![untitled](Images/Screenshot12.png)
 
-2. Check web server performance running on the above-specified instances. This can be done by using the **public Ip Address**.
+2. Check web server performance running on the above-specified instances. This can be done by using the **public IP Address**.
    
    2.1. check the first instance having IP Address <kbd> 13.201.91.181</kbd>
    ![untitled](Images/Screenshot13.png)
