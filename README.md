@@ -34,7 +34,7 @@ A target group in AWS is a component that directs traffic to registered targets,
 ## Step 1: Launch Template
 Go to the console and search for <kbd>EC2</kbd> and on. click on <kbd>Launch Templete</kbd>. Creating the new template by clicking on <kbd>Cretate Launch Templete</kbd>. follow the image below.
 
- ![Untitled](images/Screenshot1.png)
+ ![Untitled](Images/Screenshot1.png)
 
 Set Up the launch template: These are the main requirements for deploying the server. 
 - Name: <kbd>Tutorial_Website</kbd>
@@ -152,7 +152,7 @@ After Pasting the DNS Name into a website, we can see this:
 
    ![untitled](Images/Screenshot17.png)
 
-
+#### Successfully we have deployed the Scalable and On-Demand Webserver.
 
 
 
