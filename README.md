@@ -53,7 +53,105 @@ If we want to create an auto-scaling group, Go to select the Auto-scaling Groups
 ![untitled](Images/Screenshot3.png)
 
 To set up the Auto Scaling Group, we need to complete the process in 7 stages:
-1. Choose Launch Template:
+
+#### 2.1. Choose Launch Template:
       - Name of Auto Scaling Group: <kbd> ASGTutorialWebsite</kbd>
       - Choose Launch Template: <kbd>Tutorial_website</kbd>
-2. Choose instance launch options 
+click on <kbd>Next</kbd> on right-bottom side.
+#### 2.2. Choose instance launch options:
+When we integrate the auto-scaling group into our webserver. Newly launched instances are automatically launched across the selected Available zones to provide low latency and High availability. In this, we going to specify the VPC and available zones to our Autoscaling groups.
+     - Select VPC:<kbd>VPC ID</kbd.
+     - Select Availability Zones: specifying the number of Availability Zones.
+![Untitled](images/Screenshot4.png)
+
+#### 2.3. Integrate with Other Services -optional:
+
+Here, to distribute all incoming traffic to all instances equally. We need to integrate the load balancer into our webserver(EC2 instances). So that, we can specify or create a new load balancer in this step. I am Creating the new load balancer.
+   - Select Load Balancer: <kbd> Attach to a New Load Balencer</kbd>
+   - Load Balancer type: <kbd>Aplication Load Balencer</kbd>
+   - Name: <kbd>LaodBalencerLearnwebsite</kbd>
+   - Load Balancer Scheme: <kbd>Internet-facing</kbd> (because This web server is used by the public)
+     ![untitled](Images/Screenshot6.png)
+   - Select Network Configuration: Default VPC and Availability Zones are selected. We can add a new AZ to handle the high input traffic.
+     ![untitled](Images/Screenshot7.png)
+     
+   - Select Target Group: select <kbd>Create a New Target Group</kbd> (Here we select already existed Target Group)
+     ![untitled](Images/Screenshot8.png)
+   - Select Ec2 Health Checks: Enable the check box <kbd>
+Turn on Elastic Load Balancing health checks</kbd>
+
+     ![untitled](Images/Screenshot9.png)
+click on <kbd>Next</kbd> botten.
+
+#### 2.4. Configure group size and scaling:
+
+In this stage, we need to specify some input parameters and the threshold value for the auto-scaling group. Based on the parameters the instances are Scale-in and scale-out operation are done. Even if we miss the step, the default parameters are taken by the auto-scaling group. follow the given image for reference.
+- Group Size: Under the Desired capacity specify <kbd>2</kbd>(This parameter used to maintain the no.of instances at normal condition)
+
+- Scaling Limits:
+- Min desired capacity: 1
+- Max desired capacity: 4
+ ![untitled](Images/Screenshot10.png)
+
+-Automatic scaling - optional: select the <kbd>Target tracking scaling policy</kbd>(Choose a CloudWatch metric and target value and let the scaling policy adjust the desired capacity in proportion to the metric's value.)
+- Scaling policy name: <kbd>Target Tracking Policy</kbd>
+- Metric type: select <kbd>Average CPU Utilization.</kbd>
+- Target value: Enter Number <kbd> 90</kbd>(this is percentage of CPU utilization>
+- Instance warmup: Warmup time for launching a new instance<kbd>120</kbd>
+ ![untitled](Images/Screenshot11.png)
+
+click on <kbd>Next</kbd> butten.
+
+#### 2.5. Add notifications - optional
+This is used to get notifications by using the AWS SNS service.
+
+click on <kbd>Next</kbd> botten.
+
+#### 2.6. Add tags - optional Info
+Add tags to help you search, filter, and track your Auto Scaling group across AWS. You can also choose to add these tags to instances when they are launched automatically.
+
+click on <kbd>Next</kbd> botten.
+
+#### 2.7. Review:
+Cross-check all set-up before creating an Auto-scaling group.
+
+click on <kbd>Create Auto Scaling Group</kbd> botten.
+
+***Note: Now We have created the Auto Scaling Group, Load Balancer, and Target Group.**
+
+### Verifying Instance Created by Auto Scaling Groups:
+1. While creating the instances, we have specified the Desired, Minimum, and Maximum capacity. Based on these parameters, Instances are created. We can verify instances by navigating to EC2-**instances**. At normal conditions, two EC2-instances are maintained.
+![untitled](Images/Screenshot12.png)
+
+2. Check web server performance running on the above-specified instances. This can be done by using the **public Ip Address**.
+   
+   2.1. check the first instance having IP Address <kbd> 13.201.91.181</kbd>
+   ![untitled](Images/Screenshot13.png)
+
+   2.2. check the second instance having IP Address <kbd>15.206.211.172</kbd>
+   ![untitled](Images/Screenshot14.png)
+
+
+### Verifying the instance Health checks:
+Target Groups automatically connect all instances to the load balancer. We can check the instance health in the target groups.
+To check the Instance health, Go to Target Groups and select the <kbd>TargetGroupsASGLearnwebsite</kbd>. Scroll down to the bottom, Under the <kbd>Registered Targets</kbd> we can see the instance status.
+
+   ![untitled](Images/Screenshot15.png)
+
+### Check Load Balancer:
+Here, we can start utilizing the website  by using the <kbd>DNS Name</kbd>. Click on the LeadBalancerASGLearnwebsite</kbd>, and copy the <kbd>DNS Name</kbd>.
+
+   ![untitled](Images/Screenshot16.png)
+
+After Pasting the DNS Name into a website, we can see this:
+
+   ![untitled](Images/Screenshot17.png)
+
+
+
+
+
+
+
+
+
